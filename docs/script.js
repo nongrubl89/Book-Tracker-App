@@ -1,3 +1,23 @@
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+var firebaseConfig = {
+  apiKey: "AIzaSyCcpFpnTs8YuiXhGlOPTGuZNBkc64cZAXk",
+  authDomain: "book-tracker-d5bd9.firebaseapp.com",
+  projectId: "book-tracker-d5bd9",
+  storageBucket: "book-tracker-d5bd9.appspot.com",
+  messagingSenderId: "665784219072",
+  appId: "1:665784219072:web:afc11e1b675ecc85e98425",
+  measurementId: "G-QGLD1T5F3L",
+  databaseURL: "https://book-tracker-d5bd9-default-rtdb.firebaseio.com/",
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+//reference book list in firebase
+
+var bookDatabase = firebase.database().ref("books");
+console.log(bookDatabase);
+
 const myLibrary = [];
 
 function Book(title, author, hasRead, starRating, showOtherBooks) {
@@ -6,6 +26,16 @@ function Book(title, author, hasRead, starRating, showOtherBooks) {
     (this.hasRead = hasRead),
     (this.starRating = starRating),
     (this.showOtherBooks = showOtherBooks);
+}
+
+function saveBook(title, author, hasRead, starRating) {
+  var newBookRef = bookDatabase.push();
+  newBookRef.set({
+    title: title,
+    author: author,
+    hasRead: hasRead,
+    starRating: starRating,
+  });
 }
 
 function render(arr) {
@@ -128,6 +158,12 @@ function newBook() {
       (starRating = unicodeStar),
       (showOtherBooks = "")
     );
+    newBookRef(
+      upperCase(title.value),
+      upperCase(author.value),
+      readStatus.value,
+      (starRating = unicodeStar)
+    );
     if (document.getElementById("read").value === "Yes") {
       addBookToLibrary(book);
       render(myLibrary);
@@ -187,8 +223,6 @@ function removeBookFromLibrary(i) {
   const book = event.target.parentNode.parentNode;
   myLibrary.splice(i, 1);
   book.remove(book);
-  console.log(myLibrary);
-  console.log(book);
 }
 
 let stars = document.querySelectorAll(".selected");
