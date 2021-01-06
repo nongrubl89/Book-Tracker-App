@@ -70,6 +70,13 @@ h3 {
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
 }
 
+.citation {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  align-items: center;
+  width: 80%;
+}
+
 header {
   padding-left: 8px;
   display: grid;
@@ -166,7 +173,7 @@ input[type="text"] {
 #remove-overlay {
   display: inline-block;
   border: 0.1em solid #ffffff;
-  border-radius: 0.12em;
+  border-radius: 8px;
   color: #ffffff;
   background-color: #80bfff;
   padding: 0.75em 1.2em;
