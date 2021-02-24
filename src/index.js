@@ -1,5 +1,3 @@
-const myLibrary = [];
-
 function Book(title, author, hasRead, starRating, showOtherBooks) {
   (this.title = title),
     (this.author = author),
@@ -7,6 +5,24 @@ function Book(title, author, hasRead, starRating, showOtherBooks) {
     (this.starRating = starRating),
     (this.showOtherBooks = showOtherBooks);
 }
+
+const book1 = new Book(
+  "My Brilliant Friend",
+  "Elena Ferrante",
+  true,
+  "★ ★ ★ ★ ★",
+  "",
+  "",
+  ""
+);
+
+const myLibrary = [];
+
+function addBookToLibrary(obj) {
+  myLibrary.push(obj);
+}
+
+addBookToLibrary(book1);
 
 function render(arr) {
   arr.forEach((book, i) => {
@@ -23,7 +39,7 @@ function render(arr) {
                           ${
                             book.starRating
                               ? `<div class="stars">${book.starRating}</div>`
-                              : `<button class="mark-as-read">Mark As Read and Add Rating</button>`
+                              : `<span></span>`
                           }</span>
                           <button class='delete'><img src="trashcan.png"/></button>
                           <button class='edit'><img src="edit.png"/></button>
@@ -38,9 +54,7 @@ function render(arr) {
   });
 }
 
-function addBookToLibrary(obj) {
-  myLibrary.push(obj);
-}
+
 
 function newRatingsDiv() {
   if (readDropdown.value === "Yes") {
@@ -83,6 +97,7 @@ function showBooksByAuthor(data) {
   }
   overlayDiv.style.display = "block";
   console.log(data.results);
+  
   //thanks to Hassan Imam on stack overflow for this:
   const removerDuplicateTitles = data.results.reduce((acc, item) => {
     if (!acc.some((obj) => obj.book_title === item.book_title)) {
@@ -190,6 +205,7 @@ function removeBookFromLibrary(i) {
   book.remove(book);
 }
 
+
 let stars = document.querySelectorAll(".selected");
 const readDropdown = document.getElementById("read");
 const ratingsDiv = document.querySelector(".Rating");
@@ -197,16 +213,7 @@ const title = document.getElementById("title");
 const author = document.getElementById("author");
 const readStatus = document.getElementById("read");
 const newTitle = document.getElementById("submit");
-const book1 = new Book(
-  "My Brilliant Friend",
-  "Elena Ferrante",
-  true,
-  "★ ★ ★ ★ ★",
-  "",
-  "",
-  ""
-);
-addBookToLibrary(book1);
+
 
 document.addEventListener("click", selectRating, false);
 document.addEventListener("mouseover", chooseRating, false);
@@ -247,4 +254,7 @@ function editButtonListener() {
   });
 }
 
+
+
 render(myLibrary);
+
