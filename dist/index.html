@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>Book Tracker</title>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="stylesheet" href="style.css" />
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+      <div class ="container">
+        <div class="forms">
+            <h3>Add a new Title</h3>
+          <form id="bookInfo">
+            <label for="title">Title:</label><br />
+            <input type="text" id="title" name="title" value="" /><br />
+            <label for="author">Author:</label><br />
+            <input type="text" id="author" name="author" value="" /><br /><br />
+            <label for="hasRead">Have you read this title?</label><br />
+            <div class="Selections">
+              <select id="read">
+                <option value="Default">--</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option></select
+              ><br />
+              <div class="Rating" id="rate">
+                <p>How would you rate this title?</p>
+                <button type="button" class="selected" data-star="1">★</button>
+                <button type="button" class="selected" data-star="2">★</button>
+                <button type="button" class="selected" data-star="3">★</button>
+                <button type="button" class="selected" data-star="4">★</button>
+                <button type="button" class="selected" data-star="5">★</button>
+              </div>
+              <br />
+              <div class="submission"></div>
+              <input type="submit" id="submit" value="Add to my library" />
+            </div>
+          </form>
+          <div class ='citation'>
+              <a href ="https://developer.nytimes.com"><img src="nyt.png"/></a>
+              <p>Data provided by the New York Times Developer API</p>
+          </div>
+        </div>
+    <header class="navbar">Javascript Library Project</header>
+    <div class="books-container">
+    </div>
+    <div class = "overlay">
+      <button id = "remove-overlay">Close</button>
+      <div id ="text-overlay">
+      </div>
+    </div>
+     
+    </div>
+    <script src="main.js"></script>
+
+   
+  </body>
+</html>
+
