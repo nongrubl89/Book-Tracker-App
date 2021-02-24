@@ -1,6 +1,17 @@
 * {
   box-sizing: border-box;
 }
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
 body {
   background-color: rgba(255, 255, 255, 0.966);
   font-family: "Roboto";
@@ -26,6 +37,8 @@ h3 {
 
 .read-book-div,
 .unread-book-div {
+  animation: fadeIn 1s forwards;
+  z-index: 0;
   margin-top: 10%;
   grid-column: 2/3;
   display: grid;
@@ -108,9 +121,6 @@ tr {
   grid-template-columns: 150px 150px 150px 50px 50px 150px;
   align-items: center;
   padding: 3px;
-  opacity: 1;
-  -webkit-transition: opacity 1000ms linear;
-  transition: opacity 1000ms linear;
 }
 
 .unread thead tr {
@@ -210,11 +220,6 @@ input[type="text"] {
   margin-top: 10px;
 }
 
-.read-rows {
-  opacity: 1;
-  -webkit-transition: opacity 500ms linear;
-  transition: opacity 500ms linear;
-}
 
 .overlay {
   position: fixed;
